@@ -1,0 +1,18 @@
+version: 2
+updates:
+  # 1. Analiza las dependencias de Java / Maven definidas en el pom.xml
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly" # Comprueba actualizaciones semanalmente
+    open-pull-requests-limit: 0 # Limite de PRs abiertas a la vez
+    commit-message:
+      prefix: "build(deps)" # Mantiene el estándar de Conventional Commits
+
+  # 2. Analiza las versiones de las GitHub Actions usadas en .github/workflows/
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "ci(deps)" # Etiqueta adecuada para Conventional Commits
